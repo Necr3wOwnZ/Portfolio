@@ -1,0 +1,40 @@
+body {
+    font-family: 'pt sans';
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+
+/*
+  =================
+  Circle Graph using (https://github.com/rendro/easy-pie-chart)
+  ================
+  */
+
+.circle-graph p {
+    text-align: center;
+    padding: 10px;
+    z-index: 100;
+}
+
+.graph-one {
+    height: 300px;
+    /* set height for postioning */
+}
+
+.circle-graph-container {
+    position: relative;
+}
+
+canvas {
+    position: absolute;
+    top: 120px;
+}
+
+.circle-graph {
+    margin: 20px;
+    float: left;
+}

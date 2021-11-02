@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=Major+Mono+Display&family=Roboto+Mono:wght@300&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'PT Sans', sans-serif;
+}
+
+body {
+    height: 100vh;
+    width: 100%;
+    background: #111;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 100vh;
+    grid-template-areas: "body";
+    justify-items: center;
+}
+
+.container {
+    grid-area: body;
+    width: 25em;
+    height: 25em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.content {
+    grid-area: 1;
+    position: absolute;
+    background: transparent;
+}
+
+.half-circle {
+    grid-area: 1;
+    height: 22em;
+    width: 11em;
+    border-radius: 0 100% 100% 0 / 0 50% 50% 0;
+    background: linear-gradient(315deg, #ffbb00, #ff0058);
+    position: absolute;
+    z-index: auto;
+}
+
+.smaller {
+    font-size: 0.45em;
+    padding-bottom: 20px;
+    vertical-align: super;
+}
+
+.shadow {
+    grid-area: 1;
+    height: 20em;
+    width: 20em;
+    background: rgba(255, 255, 255, .05);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, .01);
+    backdrop-filter: blur(5px);
+    border-radius: 50%;
+}
+
+:root {
+    --rotate-left-side: 0.95;
+}
+
+.left-side {
+    /* --rotate-left-side: 0.75; */
+    transform-origin: left;
+    transform: rotate(calc(360deg * var(--rotate-left-side) - 180deg));
+    padding-left: 11em;
+    background: linear-gradient(calc(360deg * var(--rotate-left-side)), #ffbb00, #ff0058);
+}
+
+.right-side {
+    /* margin-left: 11em; */
+    /* transform: rotate(180deg); */
+    transform: translateX(5.5em);
+    background: linear-gradient(0deg, #ffbb00, #ff0058);
+}
+
+
+/* .left-side::before,
+.right-side::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: inherit;
+    border-radius: inherit;
+    filter: blur(10px);
+} */

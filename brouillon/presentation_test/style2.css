@@ -1,0 +1,230 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: consolas;
+}
+
+body {
+    min-height: 100vh;
+    /* min-height: 100vh; Mettre dans tout les body */
+    background: #111;
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: 1fr 8fr 1fr;
+    grid-template-rows: minmax(150px, auto);
+    grid-template-areas: "band_L band_C band_R";
+    justify-items: center;
+}
+
+.div_page {
+    min-height: 70vh;
+    width: 100%;
+    grid-area: band_C;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: minmax(50px, auto) minmax(300px, auto) minmax(50px, auto);
+    /* ========================== Adapter avec le reponsive =========================== */
+    grid-gap: 40px;
+    grid-template-areas: "head" "contenu" "foot";
+    justify-items: center;
+}
+
+
+/* ============================== */
+
+
+/* ===== Card glassmorphing ===== */
+
+
+/* ============================== */
+
+
+/* == Container and box == */
+
+.container {
+    display: flex;
+    min-height: 50vh;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.container .box {
+    position: relative;
+    width: 320px;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 50px 30px 120px;
+    transition: .5s;
+}
+
+
+/* == Box before and after == */
+
+.container .box::before,
+.container .box::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50px;
+    width: 60%;
+    height: 120%;
+    background: #fff;
+    border-radius: 8px;
+    transform: skewX(15deg);
+    transition: .5s;
+}
+
+.container .box::after {
+    filter: blur(30px);
+}
+
+.container .box:hover::before,
+.container .box:hover::after {
+    transform: skewX(0deg);
+    left: 20px;
+    width: calc(100% - 90px);
+}
+
+.container .box:nth-child(3n-2)::before,
+.container .box:nth-child(3n-2)::after {
+    background: linear-gradient(315deg, #ffbb00, #ff0058);
+    /* background: transparent; */
+}
+
+.container .box:nth-child(3n-1)::before,
+.container .box:nth-child(3n-1)::after {
+    background: linear-gradient(315deg, #03a9f4, #ff0058);
+}
+
+.container .box:nth-child(3n)::before,
+.container .box:nth-child(3n)::after {
+    background: linear-gradient(315deg, #4dff03, #00d0ff);
+}
+
+
+/* == Span == */
+
+.container .box span {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 50;
+    pointer-events: none;
+}
+
+
+/* == Span before and after == */
+
+.container .box span::before,
+.container .box span::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, .1);
+    backdrop-filter: blur(10px);
+    opacity: 0;
+    transition: .5s;
+    animation: card_animate 2s ease-in-out infinite;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.container .box span::before {
+    top: 0;
+    left: 0;
+}
+
+.container .box span::after {
+    bottom: 0;
+    right: 0;
+}
+
+.container .box:hover span::before,
+.container .box:hover span::after {
+    content: '';
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    opacity: 1;
+}
+
+.container .box:hover span::before {
+    top: -50px;
+    left: 50px;
+}
+
+.container .box:hover span::after {
+    bottom: -60px;
+    right: 50px;
+    animation-delay: .8s;
+}
+
+
+/* == Content == */
+
+.container .box .content {
+    position: relative;
+    left: 0;
+    top: 30px;
+    padding: 20px 40px;
+    background: rgba(255, 255, 255, .05);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, .01);
+    border-radius: 8px;
+    backdrop-filter: blur(10px);
+    z-index: 1;
+    transition: .5s;
+    color: #fff;
+}
+
+.container .box:hover .content {
+    left: -25px;
+    padding: 60px 40px;
+}
+
+.container .box .content h2 {
+    font-size: 2em;
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+.container .box .content p {
+    height: 208px;
+    overflow: hidden;
+    font-size: 1.1em;
+    margin-bottom: 10px;
+    line-height: 1, 4em;
+}
+
+.container .box .content a {
+    display: inline-block;
+    font-size: 1.1em;
+    color: #111;
+    background: rgba(255, 255, 255, .4);
+    padding: 10px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 700;
+    margin-top: 5px;
+}
+
+
+/* == Animation span == */
+
+@keyframes card_animate {
+    0%,
+    100% {
+        transform: translateY(10px);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}

@@ -1,0 +1,51 @@
+https://fr.wix.com/blog/2018/02/19/14-couleurs-inspirantes-pour-un-site-internet-sublime/?utm_source=google&utm_medium=cpc&utm_campaign=12441275269^119996084522&experiment_id=^b^501532539583^^_DSA&gclid=CjwKCAjw-ZCKBhBkEiwAM4qfF73q9svB5cChAkPKp0TsT4ycmXzHwselrTHgvK7SywHc051QYem5wxoCzpIQAvD_BwE 
+
+https://gitforwindows.org/
+
+codepen.io
+
+Brouillon : 
+    <!-- <div id="circularMenu1" class="circular-menu circular-menu-left">
+
+        <a class="floating-btn" onclick="document.getElementById('circularMenu1').classList.toggle('active');">
+            <i class="fa fa-bars"></i>
+        </a>
+
+        <menu class="items-wrapper">
+            <a href="#" class="menu-item fa fa-home"></a>
+            <a href="#" class="menu-item fa fa-user"></a>
+            <a href="#" class="menu-item fa fa-pie-chart"></a>
+            <a href="#" class="menu-item fa fa-cog"></a>
+        </menu>
+
+    </div> -->
+
+
+
+/* .circular-menu.circular-menu-home:after {
+    background-color: hsl(217, 89%, 61%);
+} */
+
+
+/* .circular-menu.circular-menu-left.active .floating-btn i {
+    transform: rotate(90deg);
+}
+
+.circular-menu.circular-menu-left.active .menu-item:nth-child(1) {
+    transform: translate3d(-1em, -7em, 0);
+}
+
+.circular-menu.circular-menu-left.active .menu-item:nth-child(2) {
+    transform: translate3d(3.5em, -6.3em, 0);
+}
+
+.circular-menu.circular-menu-left.active .menu-item:nth-child(3) {
+    transform: translate3d(6.5em, -3.2em, 0);
+}
+
+.circular-menu.circular-menu-left.active .menu-item:nth-child(4) {
+    transform: translate3d(7em, 1em, 0);
+} */
+
+
+<script type="text/javascript" src="/js/app.js"></script>

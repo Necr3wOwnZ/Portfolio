@@ -1,0 +1,205 @@
+/* -- Diviton de la page -- */
+
+body {
+    min-height: 100vh;
+    background-color: #111;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: 1fr 8fr 1fr;
+    grid-template-rows: minmax(150px, auto);
+    grid-template-areas: "band_L band_C band_R";
+    justify-items: center;
+    font-family: Baloo;
+}
+
+.div_page {
+    min-height: 70vh;
+    width: 100%;
+    grid-area: band_C;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: minmax(50px, auto) minmax(300px, auto) minmax(50px, auto);
+    /* ========================== Adapter avec le reponsive =========================== */
+    grid-gap: 40px;
+    grid-template-areas: "head" "contenu" "foot";
+    justify-items: center;
+}
+
+
+/* -- Objet du head -- */
+
+.head_p {
+    grid-area: head;
+}
+
+
+/* -- Cartes des articles -- */
+
+.card_contain {
+    grid-area: contenu;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 379px;
+    grid-gap: 70px 30px;
+    justify-items: center;
+}
+
+.card {
+    width: 300px;
+    height: 379px;
+    cursor: pointer;
+    border-radius: 12px;
+    font-family: arial, sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 70px 63px -60px #6b6b6b;
+    transition: all .9s;
+}
+
+.card h2 {
+    color: #111;
+    margin: 10px;
+    opacity: 0;
+    transition: all 1s;
+    transform: translate(-40px, -30px) scale(110%);
+}
+
+.card .intro {
+    padding: 0;
+    color: #111;
+    margin: 0px 10px 0px 50px;
+    height: 257px;
+    width: auto;
+    overflow: hidden;
+    opacity: 0;
+    font-weight: bold;
+    font-stretch: 110%;
+    line-height: 90%;
+    text-align: justify;
+    transition: all 1s;
+    transform: translate(-40px, -30px) scale(110%);
+}
+
+.card .intro p {
+    /* padding: 0; */
+    margin: 0;
+}
+
+.card .icons {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    height: 130px;
+    width: 50px;
+    top: 226px;
+    justify-content: end;
+    align-items: center;
+    opacity: 0;
+    transition: all 1s;
+    transform: translate(-40px) scale(110%);
+}
+
+.card .border {
+    height: 369px;
+    width: 290px;
+    border-radius: 10px;
+    box-shadow: inset 0 0 0 0px rgba(255, 255, 255, .2);
+    position: relative;
+    transform: scale(102%);
+    transition: transform .8s;
+}
+
+.card .icons a {
+    color: #111;
+    margin: 10px 0px 0px 0px;
+}
+
+.card:hover h2 {
+    opacity: 1;
+    transform: translate(0px, 0px) scale(100%);
+}
+
+.card:hover .intro {
+    opacity: 1;
+    transform: translate(0px, 0px) scale(100%);
+}
+
+.card:hover .icons {
+    opacity: 1;
+    transform: translate(0px) scale(100%);
+}
+
+.card:hover .border {
+    border: 3px solid #111;
+    box-shadow: inset 0 0 0 200px rgba(255, 255, 255, .2);
+    transform: scale(100%);
+}
+
+.card_contain .card:nth-child(1n) {
+    background: center center no-repeat;
+    background-size: auto 379px;
+    /* faire adapter si l'image est haute que large et inversement */
+}
+
+.card_contain .card:nth-child(1n):hover {
+    background: center top no-repeat;
+    background-size: auto 470px;
+}
+
+
+/* -- Responsive -- */
+
+@media screen and (max-width: 1500px) {
+    body {
+        grid-template-columns: 2fr 8fr 2fr;
+        grid-template-rows: max-content;
+        grid-template-areas: "band_L band_C band_R";
+    }
+    .card_contain {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+
+/* =========================================================================================================== */
+
+
+/* Partie a revoir, taille carte, afficher tous les titre et disposition */
+
+@media screen and (max-width: 1000px) {
+    /* Modifier la taille des cartes */
+    body {
+        grid-template-columns: 2fr 5fr 2fr;
+        grid-template-rows: max-content;
+        grid-template-areas: "band_L band_C band_R";
+    }
+    .card_contain {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    body {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr max-content 1fr;
+        grid-template-areas: "band_L" "band_C" "band_R";
+    }
+    .card_contain {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media screen and (min-width: 1800px) {
+    body {
+        grid-template-columns: 1fr 8fr 1fr;
+        grid-template-rows: max-content;
+        grid-template-areas: "band_L band_C band_R";
+    }
+    .card_contain {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+}

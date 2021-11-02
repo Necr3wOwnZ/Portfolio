@@ -1,0 +1,293 @@
+@import url('https://fonts.googleapis.com/css2?family=Major+Mono+Display&display=swap');
+
+/* font-family: 'Major Mono Display', monospace; Police des titres stylés */
+
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+/* font-family: 'PT Sans', sans-serif;  Police d'écriture */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'PT Sans', sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    background: #111;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: minmax(150px, auto);
+    grid-template-areas: "body";
+    justify-items: center;
+}
+
+
+/* ============================================= */
+
+
+/* ===== Compétence bar glassmorphing neon ===== */
+
+
+/* ============================================= */
+
+
+/* == Container and box == */
+
+.bar_container {
+    grid-area: body;
+    display: flex;
+    height: 100%;
+    width: 70vw;
+    padding-top: 30px;
+    margin-top: 50px;
+    background: rgba(255, 255, 255, .05);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, .01);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.bar_container .box {
+    position: relative;
+    width: 280px;
+    height: 180px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 20px 20px 40px;
+    transition: .5s;
+}
+
+.bar_container .box:hover {
+    z-index: 50;
+}
+
+
+/* == Glass == */
+
+.bar_container .box .glass {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+    backdrop-filter: blur(30px);
+    transition: .75s;
+}
+
+.bar_container .box:hover .glass {
+    top: -30px;
+    width: 60vw;
+    height: 240px;
+    background: rgba(255, 255, 255, .5);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, .01);
+    backdrop-filter: blur(30px);
+}
+
+.bar_container .box .glass::before,
+.bar_container .box .glass::after {
+    content: '';
+    position: absolute;
+    width: 50%;
+    height: 50%;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, .1);
+    backdrop-filter: blur(10px);
+    opacity: 0;
+    transition: .9s;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.bar_container .box .glass::before {
+    top: 10;
+    left: 10;
+}
+
+.bar_container .box .glass::after {
+    bottom: -50px;
+    right: 0;
+}
+
+.bar_container .box:hover .glass::before,
+.bar_container .box:hover .glass::after {
+    content: '';
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    opacity: 1;
+}
+
+.bar_container .box:hover .glass::before {
+    top: -40px;
+    left: -20px;
+    animation: card_anim_before 2s ease-in-out infinite;
+}
+
+.bar_container .box:hover .glass::after {
+    bottom: -80px;
+    right: 50px;
+    animation: card_anim_after 2s ease-in-out infinite;
+}
+
+
+/* == Bar, before and after == */
+
+.bar_container .box .bar {
+    display: flex;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border-radius: 12px;
+    pointer-events: none;
+    transition: .9s;
+}
+
+.bar_container .box .bar::before,
+.bar_container .box .bar::after {
+    content: '';
+    position: absolute;
+    top: -18px;
+    left: 40px;
+    width: 70%;
+    height: 120%;
+    border-radius: 8px;
+    transform: skewX(30deg);
+    transition: .5s;
+}
+
+.bar_container .bar::after {
+    filter: blur(30px);
+}
+
+.bar_container .box:hover .bar {
+    top: 10%;
+    width: calc(65vw + 10px);
+    height: 74px;
+    background: rgba(17, 17, 17, 0.7);
+}
+
+.bar_container .box:hover .bar::before,
+.bar_container .box:hover .bar::after {
+    transform: skewX(0deg);
+    top: 5px;
+    left: 5px;
+    height: calc(100% - 10px);
+}
+
+.bar_container .box:nth-child(n):hover .bar::before,
+.bar_container .box:nth-child(n):hover .bar::after {
+    width: calc((65vw - 10px) * var(--bar-pourcent));
+}
+
+.bar_container .box:nth-child(3n-2) .bar::before,
+.bar_container .box:nth-child(3n-2) .bar::after {
+    background: linear-gradient(315deg, #ffbb00, #ff0058);
+}
+
+.bar_container .box:nth-child(3n-1) .bar::before,
+.bar_container .box:nth-child(3n-1) .bar::after {
+    background: linear-gradient(315deg, #03a9f4, #ff0058);
+}
+
+.bar_container .box:nth-child(3n) .bar::before,
+.bar_container .box:nth-child(3n) .bar::after {
+    background: linear-gradient(315deg, #4dff03, #00d0ff);
+}
+
+
+/* === Content === */
+
+.bar_container .box .content {
+    position: relative;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, .05);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, .01);
+    border-radius: 8px;
+    backdrop-filter: blur(10px);
+    padding: 30px;
+    transition: .7s;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.bar_container .box:hover .content {
+    left: -25px;
+    width: 110%;
+    height: 110%;
+    grid-template-rows: 50px 260px 70px;
+}
+
+.bar_container .box .content h2 {
+    font-size: 3em;
+    color: #fff;
+    margin-bottom: 10px;
+    cursor: default;
+    font-family: 'Major Mono Display', monospace;
+}
+
+.bar_container .box .content p {
+    color: #111;
+    width: 100%;
+    overflow: hidden;
+    font-size: 2.5em;
+    text-align: center;
+    margin-bottom: 10px;
+    font-weight: 400;
+    line-height: 130%;
+    cursor: default;
+    font-weight: 700;
+}
+
+.bar_container .smaller {
+    font-size: 0.75em;
+    color: #111;
+    padding-bottom: 15px;
+    vertical-align: super;
+    font-weight: 700;
+}
+
+
+/*  */
+
+
+/*  */
+
+
+/*  */
+
+
+/* == Animation span == */
+
+@keyframes card_anim_before {
+    0%,
+    100% {
+        transform: translateY(10px);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes card_anim_after {
+    0%,
+    100% {
+        transform: translateY(-10px);
+    }
+    50% {
+        transform: translateY(10px);
+    }
+}

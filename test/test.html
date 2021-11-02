@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="test.css">
+</head>
+
+<body>
+
+    <div class="bar_container">
+        <div class="box" onmouseover="mouseoverLeft(0)" onmouseout="mouseoutLeft(0)">
+            <span class="glass"></span>
+            <span class="bar"></span>
+            <div class="content">
+                <h2>HTML</h2>
+                <p class="pourcent">95<span class="smaller">%</span>
+                </p>
+            </div>
+        </div>
+        <div class="box" onmouseover="mouseoverLeft(1)" onmouseout="mouseoutLeft(1)">
+            <span class="glass"></span>
+            <span class="bar"></span>
+            <div class="content">
+                <h2>CSS</h2>
+                <p class="pourcent">70<span class="smaller">%</span>
+                </p>
+            </div>
+        </div>
+        <div class="box" onmouseover="mouseoverLeft(2)" onmouseout="mouseoutLeft(2)">
+            <span class="glass"></span>
+            <span class="bar"></span>
+            <div class="content">
+                <h2>JS</h2>
+                <p class="pourcent">50<span class="smaller">%</span>
+                </p>
+            </div>
+        </div>
+        <div class="box" onmouseover="mouseoverLeft(3)" onmouseout="mouseoutLeft(3)">
+            <span class="glass"></span>
+            <span class="bar"></span>
+            <div class="content">
+                <h2>C#</h2>
+                <p class="pourcent">98<span class="smaller">%</span>
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // ===================================================================
+        // === FONCTION DEFINITION DE LA POSITION DES BARRES DE COMPETENSE ===
+        // ===================================================================
+
+        function mouseoverLeft(X) {
+            const leftBox = document.getElementsByClassName('bar_container')[0].getBoundingClientRect().left;
+            const left = document.getElementsByClassName('box')[X].getBoundingClientRect().left - leftBox;
+            const pourcent = document.getElementsByClassName('pourcent')[X].textContent.replace(/%/g, '');
+
+            document.getElementsByClassName('bar')[X].style.setProperty('left', 'calc(' + (-left) + 'px + 2.5vw - 10px)');
+            document.getElementsByClassName('glass')[X].style.setProperty('left', 'calc(' + (-left) + 'px + 5vw)');
+
+            document.querySelector(':root').style.setProperty('--bar-pourcent', (pourcent / 100));
+        };
+
+        function mouseoutLeft(X) {
+            document.getElementsByClassName('bar')[X].style.setProperty('left', '0px');
+            document.getElementsByClassName('glass')[X].style.setProperty('left', '0px');
+        }
+    </script>
+</body>
+
+</html>
